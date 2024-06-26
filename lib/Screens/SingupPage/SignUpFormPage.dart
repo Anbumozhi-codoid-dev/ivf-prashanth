@@ -24,26 +24,41 @@ class _SingupFormState extends State<SingupForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+
+          backgroundColor: AppTheme.themePink,
+          centerTitle: true,
+          automaticallyImplyLeading: false,
+
+          toolbarHeight: 14.h,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              //  Radius.circular(12.h)
+              bottomRight: Radius.circular(12.h),
+              bottomLeft: Radius.circular(12.h),
+            ),
+          ),
+          bottom: const PreferredSize(
+              preferredSize:
+              Size.fromHeight(2.0), // Set the height of the border line
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                child: Divider(
+                  thickness: 1.0,
+                  height: 1,
+                  color: AppTheme.white,
+                ),
+              )),
+          title:
+          CommonUI().myText(
+              text: "Sign up",
+              color: AppTheme.white,
+              fontSize: 20.sp,
+              fontfamily: "Nunito",
+              fontWeight: FontWeight.w700),        ),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                height: 15.h,
-                width: 100.w,
-                decoration: const BoxDecoration(
-                    color: AppTheme.themePink,
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(100),
-                        bottomRight: Radius.circular(100))),
-                child: Center(
-                  child: CommonUI().myText(
-                      text: "Sign up",
-                      color: AppTheme.white,
-                      fontSize: 20.sp,
-                      fontfamily: "Nunito",
-                      fontWeight: FontWeight.w700),
-                ),
-              ),
               Container(
                 height: 80.h,
                 child: Padding(

@@ -65,13 +65,33 @@ class _SignUpPageState extends State<SignUpPage> {
       SafeArea(
         child: Scaffold(
           //
-          // appBar: AppBar(
-          //   actions: [
-          //     Container(
-          //       color: Colors.red,
-          //     )
-          //   ],
-          // ),
+          appBar: AppBar(
+
+backgroundColor: AppTheme.themePink,
+            centerTitle: true,
+            automaticallyImplyLeading: false,
+
+            toolbarHeight: 20.h,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+              //  Radius.circular(12.h)
+                 bottomRight: Radius.circular(12.h),
+                 bottomLeft: Radius.circular(12.h),
+              ),
+            ),
+            bottom: const PreferredSize(
+                preferredSize:
+                Size.fromHeight(2.0), // Set the height of the border line
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  child: Divider(
+                    thickness: 1.0,
+                    height: 1,
+                    color: AppTheme.white,
+                  ),
+                )),
+            title: CommonUI().myText(text: "Sign up",color: AppTheme.white,fontSize: 20.sp,fontWeight: FontWeight.w700),
+          ),
             body:
             SingleChildScrollView(
               child: Column(
