@@ -138,7 +138,7 @@ class _SingupFormState extends State<SingupForm> {
                             isFormValidator: true, // optional
                             startYear: 1900, // optional
                             endYear: 2024, // optional
-                            width: 4.w, // optional
+                            width: 2.w, // optional
                             // width: 16, // optional
                             selectedDay: dobDay, // optional
                             selectedMonth: dobMonth, // optional
@@ -159,9 +159,9 @@ class _SingupFormState extends State<SingupForm> {
                             },
               
                             showDay: true,
-                            monthFlex: 5, // optional
-                            dayFlex: 5,
-                            yearFlex: 5, // optional
+                            monthFlex: 10, // optional
+                            dayFlex: 8,
+                            yearFlex:9, // optional
                             hintDay: 'Day', // optional
                             hintMonth: 'Month', // optional
                             hintYear: 'Year', // optional

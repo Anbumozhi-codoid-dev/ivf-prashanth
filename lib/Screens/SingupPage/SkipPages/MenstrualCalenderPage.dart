@@ -291,7 +291,7 @@ class _MenstrualCalendarPageState extends State<MenstrualCalendarPage> {
       dayWidgets.add(GestureDetector(
         onTap: () => _onDaySelected(currentDate),
         child: Container(
-          color: Colors.amber,
+          // color: Colors.amber,
           margin: EdgeInsets.all(4.0),
           child: Stack(
             children: [
@@ -339,12 +339,8 @@ class _MenstrualCalendarPageState extends State<MenstrualCalendarPage> {
           d = d.add(Duration(days: 1))) {
             selectedDates.add(d);
           }
-          print("add");
           selectedDates.add(date);
-          print("selectedDates.length");
-          print(selectedDates.length);
-          print(selectedDates[0]);
-          print(selectedDates.last);
+
           setState(() {
             startDateController.text = selectedDates[0].toString().split(" ")[0];
             endDateController.text = selectedDates.last.toString().split(" ")[0];
@@ -358,13 +354,10 @@ class _MenstrualCalendarPageState extends State<MenstrualCalendarPage> {
           }
           print("sub");
           selectedDates.add(date);
-          print("selectedDates.length");
-          print(selectedDates.length);
-          print(selectedDates[0]);
-          print(selectedDates.last);
+
           setState(() {
-            startDateController.text = selectedDates[0].toString().split(" ")[0];
-            endDateController.text = selectedDates.last.toString().split(" ")[0];
+            startDateController.text = selectedDates.last.toString().split(" ")[0];
+            endDateController.text = selectedDates[0].toString().split(" ")[0];
 
           });
           }

@@ -159,12 +159,9 @@ class _CalendarWidgetState extends State<CalendarWidget> {
           for (DateTime d = firstDate.subtract(Duration(days: 1)); d.isAfter(date); d = d.subtract(Duration(days: 1))) {
             selectedDates.add(d);
           }
-          print("sub");
+
           selectedDates.add(date);
-          print("selectedDates.length");
-          print(selectedDates.length);
-          print(selectedDates[0]);
-          print(selectedDates.last);
+
 
         }
       }
@@ -238,8 +235,8 @@ class WaterDropPainter extends CustomPainter {
 
     // Position the text in the center of the water drop shape
     Offset textOffset = Offset(
-      size.width / 1.6 - textWidth / 1.8,
-      size.height / 1.7 - textHeight / 3,
+      size.width / 1.9 - textWidth / 1.8,
+      size.height / 1.9 - textHeight / 3,
     );
 
     textPainter.paint(canvas, textOffset);
