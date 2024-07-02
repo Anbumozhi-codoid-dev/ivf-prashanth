@@ -4,6 +4,7 @@ import 'Screens/SplashScreen.dart';
 import 'Utils/AllImports.dart';
 import 'Utils/AppDataHelper.dart';
 import 'Utils/AppTheme.dart';
+import 'Utils/DeviceTab.dart';
 
 MaterialColor buildMaterialColor(Color color) {
   List strengths = <double>[.05];
@@ -28,18 +29,37 @@ MaterialColor buildMaterialColor(Color color) {
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
-  networkCheck().checkinternetconnectivity();
+  Future.delayed(const Duration(seconds: 1), () {
+    networkCheck().checkinternetconnectivity();
 
+  });
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    // Delay assignment to ensure context is available
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   AppDataHelper.rootContext = context;
+    // });
+  }
+
   @override
   Widget build(BuildContext context) {
+    bool isTablet = isTabletDevice(context);
+
+    print("isTablet----");
+    print(isTablet);
     return Sizer(builder: (context, orientation, deviceType) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'IVF-Prashanth Fertility',
-
         navigatorKey: AppDataHelper.navKey,
         theme: ThemeData(
           primarySwatch: buildMaterialColor(AppTheme.themeBlue),
@@ -53,6 +73,29 @@ class MyApp extends StatelessWidget {
     });
   }
 }
+
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Sizer(builder: (context, orientation, deviceType) {
+//       return MaterialApp(
+//         debugShowCheckedModeBanner: false,
+//         title: 'IVF-Prashanth Fertility',
+//
+//         navigatorKey: AppDataHelper.navKey,
+//         theme: ThemeData(
+//           primarySwatch: buildMaterialColor(AppTheme.themeBlue),
+//           popupMenuTheme: const PopupMenuThemeData(
+//             surfaceTintColor: AppTheme.pageBackgroundWhite,
+//             color: AppTheme.pageBackgroundWhite, // Set the background color here
+//           ),
+//         ),
+//         home: SplashScreen(), // Initial screen
+//       );
+//     });
+//   }
+// }
 
 
 

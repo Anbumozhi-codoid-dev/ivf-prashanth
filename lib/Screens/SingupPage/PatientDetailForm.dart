@@ -88,15 +88,14 @@ class _PatientDetailFormState extends State<PatientDetailForm> {
                         color: AppTheme.black,
                       ),
                       Gap(2.h),
-                      CommonUI().textFormField(
+                      CommonUI().formFields(
                         controller: medicalHistoryController,
                         hintText: "Enter medical history",
                         hintfontsize: 12.sp,
                         fontfamily: "Nunito",
                         fontsize: 13.sp,
                         enabled: true,
-                        show: false,
-                        height: 5.h,
+                        height: 10.h,
                         width: 90.w,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -113,15 +112,87 @@ class _PatientDetailFormState extends State<PatientDetailForm> {
                         color: AppTheme.black,
                       ),
                       Gap(2.h),
-                      CommonUI().textFormField(
+                  TextFormField(
+                    // autovalidateMode: AutovalidateMode.onUserInteraction,
+                    controller: surgicalHistoryController,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.deny(RegExp(r"\s\s")),
+                      FilteringTextInputFormatter.deny(RegExp(
+                          r'(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])')),
+                    ],
+                    keyboardType: TextInputType.text,
+                    maxLength: 60,
+                    onChanged: (val) {},
+                    maxLines: 1,
+                    validator: (value) {
+
+                      if (value == null) {
+                        return "Please enter address";
+                      }  else {
+                        return null;
+                      }
+                    },
+                    // focusNode: addressFocus,
+                    autofocus: false,
+                    decoration: InputDecoration(
+                      errorMaxLines: 3,
+                        filled: true,
+                        counterText: "",
+                        // constraints: BoxConstraints(minHeight: 30.h),
+                        fillColor: AppTheme.formFieldGrey,
+                        // errorStyle: TextStyle(fontSize: hintfontsize, color: AppTheme.bloodRed, height: 0.5.h),
+                        contentPadding:
+                        EdgeInsets.fromLTRB(1.w, 1.h, 5, 5),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(4)),
+                        borderSide: BorderSide(
+                          width: 1,
+                          color: Color(0xffE5E5E5),
+                        ),
+                      ),
+                      disabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(4)),
+                        borderSide: BorderSide(
+                          width: 1,
+                          color: Color(0xffE5E5E5),
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(4)),
+                        borderSide: BorderSide(
+                          width: 1,
+                          color: Color(0xffE5E5E5),
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(4)),
+                        borderSide: BorderSide(
+                          width: 1,
+                        ),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(4)),
+                          borderSide: BorderSide(
+                            width: 1,
+                            color: Colors.red,
+                          )),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(4)),
+                        borderSide: BorderSide(
+                          width: 1,
+                          color: Colors.red,
+                        ),
+                      ),
+                    ),
+                  ),
+                      CommonUI().formFields(
                         controller: surgicalHistoryController,
                         hintText: "Enter surgical history",
                         hintfontsize: 12.sp,
                         fontfamily: "Nunito",
                         fontsize: 13.sp,
                         enabled: true,
-                        show: false,
-                        height: 5.h,
+                        height: 10.h,
                         width: 90.w,
                         validator: (value) {
                           if (value == null || value.isEmpty) {

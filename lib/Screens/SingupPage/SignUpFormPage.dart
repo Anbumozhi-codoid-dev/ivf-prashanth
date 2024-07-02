@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import '../../Utils/AllImports.dart';
+import '../../Utils/DateDropDown.dart';
 import 'SkipPages/HowFeelingPage.dart';
 
 class SingupForm extends StatefulWidget {
@@ -23,6 +24,8 @@ class _SingupFormState extends State<SingupForm> {
   TextEditingController cityController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    bool isTablet = isTabletDevice(context); // Use the utility function
+
     return Scaffold(
         appBar: AppBar(
 
@@ -83,15 +86,14 @@ class _SingupFormState extends State<SingupForm> {
                           color: AppTheme.black,
                         ),
                         Gap(2.h),
-                        CommonUI().textFormField(
+                        CommonUI().formFields(
                           controller: firstNameController,
                           hintText: "Enter your firstname",
                           hintfontsize: 12.sp,
                           fontfamily: "Nunito",
                           fontsize: 13.sp,
                           enabled: true,
-                          show: false,
-                          height: 5.h,
+                          height: 10.h,
                           width: 90.w,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -108,15 +110,14 @@ class _SingupFormState extends State<SingupForm> {
                           color: AppTheme.black,
                         ),
                         Gap(2.h),
-                        CommonUI().textFormField(
+                        CommonUI().formFields(
                           controller: lastNameController,
                           hintText: "Enter your lasttname",
                           hintfontsize: 12.sp,
                           fontfamily: "Nunito",
                           fontsize: 13.sp,
                           enabled: true,
-                          show: false,
-                          height: 5.h,
+                          height: 10.h,
                           width: 90.w,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -133,57 +134,65 @@ class _SingupFormState extends State<SingupForm> {
                           color: AppTheme.black,
                         ),
                         Gap(2.h),
-                        Builder(builder: (context) {
-                          return DropdownDatePicker(
-                            // inputDecoration: InputDecoration(
-                            //   border: BorderSide.none
-                            // ),
-                            icon: Icon(
-                              applyTextScaling: true,
-                              textDirection: TextDirection.ltr,
-                              Icons.arrow_drop_down_outlined,
-                              color: AppTheme.themePink,
-                              size: 30.sp,
-                            ),
-                            boxDecoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(6.0),
-                                color: AppTheme.grey.withOpacity(0.1)),
-              
-                            isDropdownHideUnderline: true, // optional
-                            isFormValidator: true, // optional
-                            startYear: 1900, // optional
-                            endYear: 2024, // optional
-                            width: 2.w, // optional
-                            // width: 16, // optional
-                            selectedDay: dobDay, // optional
-                            selectedMonth: dobMonth, // optional
-                            selectedYear: dobYear, // optional
-                            onChangedDay: (value) {
-                              dobDay = int.parse(value!);
-                              print('onChangedDay: $value');
-                            },
-                            onChangedMonth: (value) {
-                              dobMonth = int.parse(value!);
-                              print('onChangedMonth: $value');
-                            },
-                            onChangedYear: (value) {
-                              dobYear = int.parse(value!);
-                              print('onChangedYear: $value');
-              
-                              // calculateAge(  DateTime(_selectedYear!, _selectedMonth!, _selectedDay!));
-                            },
-              
-                            showDay: true,
-                            monthFlex: 10, // optional
-                            dayFlex: 8,
-                            yearFlex:9, // optional
-                            hintDay: 'Day', // optional
-                            hintMonth: 'Month', // optional
-                            hintYear: 'Year', // optional
-                            hintTextStyle:
-                                TextStyle(color: Colors.grey), // optional
-                          );
-                        }),
+                        DateDropdownsRow(),
+                        // Builder(builder: (context) {
+                        //   return
+                        //     DropdownDatePicker(
+                        //     // inputDecoration: InputDecoration(
+                        //     //   border: BorderSide.none
+                        //     // ),
+                        //     icon: Icon(
+                        //       applyTextScaling: true,
+                        //       textDirection: TextDirection.ltr,
+                        //       Icons.arrow_drop_down_outlined,
+                        //       color: AppTheme.themePink,
+                        //       size: isTablet ? 17.sp :  30.sp,
+                        //     ),
+                        //     boxDecoration: BoxDecoration(
+                        //         borderRadius: BorderRadius.circular(6.0),
+                        //         color: AppTheme.grey.withOpacity(0.1)),
+                        //
+                        //     isDropdownHideUnderline: true, // optional
+                        //     isFormValidator: true, // optional
+                        //     startYear: 1900, // optional
+                        //     endYear: 2024, // optional
+                        //     width: MediaQuery.of(context).size.width * 0.01,
+                        //     // width: 2.w,
+                        //     // optional
+                        //     // width: 16, // optional
+                        //     selectedDay: dobDay, // optional
+                        //     selectedMonth: dobMonth, // optional
+                        //     selectedYear: dobYear, // optional
+                        //     onChangedDay: (value) {
+                        //       dobDay = int.parse(value!);
+                        //       print('onChangedDay: $value');
+                        //     },
+                        //     onChangedMonth: (value) {
+                        //       dobMonth = int.parse(value!);
+                        //       print('onChangedMonth: $value');
+                        //     },
+                        //     onChangedYear: (value) {
+                        //       dobYear = int.parse(value!);
+                        //       print('onChangedYear: $value');
+                        //
+                        //       // calculateAge(  DateTime(_selectedYear!, _selectedMonth!, _selectedDay!));
+                        //     },
+                        //
+                        //     showDay: true,
+                        //     monthFlex: 10, // optional
+                        //     dayFlex: 8,
+                        //     yearFlex:9, // optional
+                        //     hintDay: 'Day', // optional
+                        //     hintMonth: 'Month', // optional
+                        //     hintYear: 'Year', // optional
+                        //     hintTextStyle:
+                        //         TextStyle(color: Colors.grey, fontSize: isTablet ?
+                        //         8.sp : 10.sp ),
+                        //     textStyle: TextStyle(
+                        //       fontSize: 8.sp
+                        //     ),// optional
+                        //                               );
+                        // }),
                         Gap(4.h),
                         CommonUI().myText(
                           text: "Country",
@@ -192,15 +201,14 @@ class _SingupFormState extends State<SingupForm> {
                           color: AppTheme.black,
                         ),
                         Gap(2.h),
-                        CommonUI().textFormField(
+                        CommonUI().formFields(
                           controller: countryController,
                           hintText: "Enter your country",
                           hintfontsize: 12.sp,
                           fontfamily: "Nunito",
                           fontsize: 13.sp,
                           enabled: true,
-                          show: false,
-                          height: 5.h,
+                          height: 10.h,
                           width: 90.w,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -217,15 +225,14 @@ class _SingupFormState extends State<SingupForm> {
                           color: AppTheme.black,
                         ),
                         Gap(2.h),
-                        CommonUI().textFormField(
+                        CommonUI().formFields(
                           controller: cityController,
                           hintText: "Enter your city",
                           hintfontsize: 12.sp,
                           fontfamily: "Nunito",
                           fontsize: 13.sp,
                           enabled: true,
-                          show: false,
-                          height: 5.h,
+                          height: 10.h,
                           width: 90.w,
                           validator: (value) {
                             if (value == null || value.isEmpty) {

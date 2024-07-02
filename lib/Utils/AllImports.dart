@@ -22,6 +22,8 @@ export 'package:gap/gap.dart';
 export 'package:pin_code_fields/pin_code_fields.dart';
 export 'package:toast/toast.dart';
 export 'package:datepicker_dropdown/datepicker_dropdown.dart';
+export  'package:ivf/Screens/SingupPage/SignUpFormPage.dart';
+
 
 
 
@@ -30,11 +32,14 @@ export 'package:datepicker_dropdown/datepicker_dropdown.dart';
 // all files to import
 export '../../Screens/WelcomePage/WelcomePage.dart';
 export '../../Screens/LoginPage/LoginScreen.dart';
-export '../../Screens/Dashboard/DshboardScreen.dart';
+export '../../Screens/Dashboard/DashboardScreen.dart';
 export '../../Repository/ApiObjectRepository.dart';
 export '../../Screens/SingupPage/SkipPages/MenstrualCalenderPage.dart';
 export '../../Screens/SingupPage/PatientDetailForm.dart';
 export '../../Screens/SingupPage/RegistrationSuccessPage.dart';
+export '../../Utils/DeviceTab.dart';
+
+
 
 
 

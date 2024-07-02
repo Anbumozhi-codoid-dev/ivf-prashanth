@@ -95,13 +95,12 @@ class _MenstrualCalendarPageState extends State<MenstrualCalendarPage> {
                           fontWeight: FontWeight.w500
                       ),
                       Gap(1.h),
-                      CommonUI().textFormField(
-                          height: 5.h,
+                      CommonUI().formFields(
+                          height: 10.h,
                           width: 40.w,
                           hintText: "start date",
                           hintfontsize: 15.sp,
                           fontsize: 14.sp,
-                          show: false,
                           controller: startDateController
                       ),
                     ],
@@ -115,12 +114,11 @@ class _MenstrualCalendarPageState extends State<MenstrualCalendarPage> {
                           fontWeight: FontWeight.w500
                       ),
                       Gap(1.h),
-                      CommonUI().textFormField(
-                          height: 5.h,
+                      CommonUI().formFields(
+                          height: 10.h,
                           width: 40.w,
                           hintText: "end date",
                           hintfontsize: 15.sp,
-                          show: false,
                           fontsize: 14.sp,
                           controller: endDateController
                       ),

@@ -214,6 +214,104 @@ class CommonUI {
   }
 
 
+  Widget formFields(
+      {
+        double height = 7,
+        double width = 100,
+        required String hintText,
+        required final TextEditingController controller,
+        String? Function(String?)? validator,
+        TextInputType? keyboardType,
+        int? maxLength,
+        bool enabled = false,
+        Function(String)? onChanged,
+        int? maxLines,
+        double? hintfontsize = 20,
+        bool autofocus = false,
+        // EdgeInsetsGeometry? contentPadding =
+        // const EdgeInsets.only(left: 30, top: 10),
+        double? fontsize = 25,
+        String? fontfamily = "Nunito",
+
+      }
+      ){
+    return Container(
+      height: height,
+      width: width,
+      child: TextFormField(
+        controller: controller,
+        autovalidateMode: AutovalidateMode.disabled,
+        style: TextStyle(
+            fontSize: fontsize,
+            color: const Color.fromRGBO(42, 42, 42, 1),
+            fontFamily: fontfamily),
+
+        keyboardType: keyboardType,
+        maxLength: maxLength,
+        enabled: enabled,
+        onChanged: onChanged,
+        maxLines: maxLines,
+        validator: validator,
+        autofocus: autofocus,
+        decoration: InputDecoration(
+          hintStyle:
+          TextStyle(color: AppTheme.borderGrey,
+              wordSpacing: 0.5.w,
+              fontSize: hintfontsize),
+          // contentPadding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 1.w), // Adjust padding as needed
+          contentPadding: EdgeInsets.all(  0.5.h),
+          errorMaxLines: 3,
+          filled: true,
+          counterText: "",
+          hintText: hintText,
+          errorStyle: TextStyle(
+            fontSize: 12.sp, // Adjust font size as needed
+            // height: 2.h, // Adjust line height as needed
+            color: Colors.red,
+          ),
+
+          fillColor: AppTheme.formFieldGrey,
+          // contentPadding: EdgeInsets.fromLTRB(1.w, 2.h, 1.w, 1.h), // Adjust padding as needed
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(4)),
+            borderSide: BorderSide.none,
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(4)),
+            borderSide: BorderSide(
+              width: 1,
+              color: Color(0xffE5E5E5),
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(4)),
+            borderSide: BorderSide.none,
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(4)),
+            borderSide: BorderSide(
+              width: 1,
+            ),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(4)),
+            borderSide: BorderSide(
+              width: 1,
+              color: Colors.red,
+            ),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(4)),
+            borderSide: BorderSide(
+              width: 1,
+              color: Colors.red,
+            ),
+          ),
+        ),
+      ),
+    );
+
+  }
 
 
 
