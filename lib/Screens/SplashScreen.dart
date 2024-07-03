@@ -15,14 +15,17 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+
     _navigateToHome();
+
   }
 
   void _navigateToHome() async {
-    await Future.delayed(Duration(seconds: 3)); // Duration of the splash screen
+    await Future.delayed(const Duration(seconds: 3)); // Duration of the splash screen
     Navigator.of(context).pushReplacement(
       CustomPageRoute(
-        child: WelcomePage(),
+        child: SingupForm(),
+        // child:  WelcomePage(),
         begin: Offset(1.0, 0.0),
         end: Offset.zero,
         duration: 1,
@@ -43,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
               Image.asset(AppConstants.prashanthLogo,
               scale: 3,),
               Gap(2.h),
-              CommonUI().myText(text: "Prashanth Fertility App",
+              CommonUI().myText(text: "Prashanth Fertility App1",
                   fontSize: 17.sp,
                   fontWeight: FontWeight.w600,
                   color: AppTheme.textPink)

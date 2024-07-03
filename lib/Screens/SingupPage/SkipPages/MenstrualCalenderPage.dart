@@ -1,6 +1,8 @@
 
 
 
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:ivf/Screens/SingupPage/SkipPages/ContentWarningPage.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -35,12 +37,16 @@ class _MenstrualCalendarPageState extends State<MenstrualCalendarPage> {
 
   @override
   Widget build(BuildContext context) {
+    bool isTablet = isTabletDevice(context); // Use the utility function
+
     DateTime firstDayOfMonth = DateTime(currentDate.year, currentDate.month, 1);
     int daysInMonth = DateTime(currentDate.year, currentDate.month + 1, 0).day;
 
     return Scaffold(
 
       body: SingleChildScrollView(
+        // physics: NeverScrollableScrollPhysics(),
+
         child: Column(
           children: [
 
@@ -70,10 +76,10 @@ class _MenstrualCalendarPageState extends State<MenstrualCalendarPage> {
                   child:
                   Column(
                     children: <Widget>[
-                      _buildMonthNavigationRow(),
+                      _buildMonthNavigationRow(isTablet),
                       Gap(2.h),
-                      _buildDaysOfWeekRow(),
-                      _buildDaysGrid(firstDayOfMonth, daysInMonth)
+                      _buildDaysOfWeekRow(isTablet),
+                      _buildDaysGrid(firstDayOfMonth, daysInMonth, isTablet)
                       // _buildDaysGrid(firstDayOfMonth, daysInMonth),
                     ],
                   )
@@ -81,6 +87,7 @@ class _MenstrualCalendarPageState extends State<MenstrualCalendarPage> {
 
               ),
             ),
+         isTablet ?    Gap(3.h) : SizedBox(),
             Padding(
               padding: EdgeInsets.fromLTRB(5.w, 0, 3.w, 0),
               child: Row(
@@ -91,7 +98,7 @@ class _MenstrualCalendarPageState extends State<MenstrualCalendarPage> {
                     children: [
                       CommonUI().myText(text: "Start Date",
                           fontfamily: "Nunito",
-                          fontSize: 14.sp,
+                          fontSize: isTablet ? 12.sp : 14.sp,
                           fontWeight: FontWeight.w500
                       ),
                       Gap(1.h),
@@ -100,7 +107,7 @@ class _MenstrualCalendarPageState extends State<MenstrualCalendarPage> {
                           width: 40.w,
                           hintText: "start date",
                           hintfontsize: 15.sp,
-                          fontsize: 14.sp,
+                          fontsize:  isTablet ? 12.sp : 14.sp,
                           controller: startDateController
                       ),
                     ],
@@ -110,7 +117,7 @@ class _MenstrualCalendarPageState extends State<MenstrualCalendarPage> {
                     children: [
                       CommonUI().myText(text: "End Date",
                           fontfamily: "Nunito",
-                          fontSize: 14.sp,
+                          fontSize: isTablet ? 12.sp : 14.sp,
                           fontWeight: FontWeight.w500
                       ),
                       Gap(1.h),
@@ -119,7 +126,7 @@ class _MenstrualCalendarPageState extends State<MenstrualCalendarPage> {
                           width: 40.w,
                           hintText: "end date",
                           hintfontsize: 15.sp,
-                          fontsize: 14.sp,
+                          fontsize: isTablet ? 12.sp :  14.sp,
                           controller: endDateController
                       ),
                     ],
@@ -138,51 +145,58 @@ class _MenstrualCalendarPageState extends State<MenstrualCalendarPage> {
                       CommonUI().myText(text: "Type of Menstrual period",
                           fontWeight: FontWeight.w500,
                           fontfamily: "Nunito",
-                          fontSize: 14.sp),
+                          fontSize: isTablet ? 12.5.sp : 14.sp),
                     ],
                   ),
                   Gap(2.h),
 
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      SizedBox(width: 20),
+                      // SizedBox(width: 5.w),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Checkbox(
-                            checkColor: AppTheme.white,
-                            activeColor: AppTheme.themePink,
-                            value: _selectedOption == true,
-                            onChanged: (bool? value) {
-                              setState(() {
-                                if (value == true) {
-                                  _selectedOption = true;
-                                } else {
-                                  // _selectedOption = null;
-                                }
-                              });
-                            },
+                          Transform.scale(
+                            scale: isTablet ?  2.3 : 1,
+                            child: Checkbox(
+                              checkColor: AppTheme.white,
+                              activeColor: AppTheme.themePink,
+                              value: _selectedOption == true,
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  if (value == true) {
+                                    _selectedOption = true;
+                                  } else {
+                                    // _selectedOption = null;
+                                  }
+                                });
+                              },
+                            ),
                           ),
                           CommonUI().myText(text: "Regulars",
                               fontfamily: "Nunito",
                               fontSize: 13.sp,
                               color: AppTheme.textPink),
 
-                          SizedBox(width: 20),
+                          SizedBox(width: isTablet ?  25.w : 20.w),
                           // Add some spacing between the checkboxes
-                          Checkbox(
-                            checkColor: AppTheme.white,
-                            activeColor: AppTheme.themePink,
-                            value: _selectedOption == false,
-                            onChanged: (bool? value) {
-                              setState(() {
-                                if (value == true) {
-                                  _selectedOption = false;
-                                } else {
-                                  // _selectedOption = null;
-                                }
-                              });
-                            },
+                          Transform.scale(
+                            scale: isTablet ?  2.3 : 1,
+                            child: Checkbox(
+                              checkColor: AppTheme.white,
+                              activeColor: AppTheme.themePink,
+                              value: _selectedOption == false,
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  if (value == true) {
+                                    _selectedOption = false;
+                                  } else {
+                                    // _selectedOption = null;
+                                  }
+                                });
+                              },
+                            ),
                           ),
                           CommonUI().myText(text: "Irregulars",
                               fontfamily: "Nunito",
@@ -219,13 +233,14 @@ class _MenstrualCalendarPageState extends State<MenstrualCalendarPage> {
                 Navigator.pushReplacement(context, MaterialPageRoute(
                     builder: (context) => ContentWarningPage()));
               },
-              child: Image.asset(AppConstants.circleArrowIcon, scale: 4.5,))
+              child: Image.asset(AppConstants.circleArrowIcon, scale:
+              isTablet ? 2.8 : 4.5,))
         ],
       ),
     );
   }
 
-  Widget _buildMonthNavigationRow() {
+  Widget _buildMonthNavigationRow( bool isTab) {
     return Container(
       height: 6.h,
       width: 90.w,
@@ -238,7 +253,9 @@ class _MenstrualCalendarPageState extends State<MenstrualCalendarPage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           IconButton(
-            icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+            icon: Icon(Icons.arrow_back_ios, color: Colors.white,
+            size: isTab ? 20.sp : 10.sp,
+            ),
             onPressed: _previousMonth,
           ),
           // Text(
@@ -253,7 +270,7 @@ class _MenstrualCalendarPageState extends State<MenstrualCalendarPage> {
               fontfamily: "Nunito"
           ),
           IconButton(
-            icon: Icon(Icons.arrow_forward_ios, color: Colors.white),
+            icon: Icon(Icons.arrow_forward_ios, color: Colors.white,   size: isTab ? 20.sp : 10.sp,),
             onPressed: _nextMonth,
           ),
         ],
@@ -261,16 +278,22 @@ class _MenstrualCalendarPageState extends State<MenstrualCalendarPage> {
     );
   }
 
-  Widget _buildDaysOfWeekRow() {
+  Widget _buildDaysOfWeekRow(bool isTab) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <String>['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-          .map((day) => Text(day))
+          .map((day) => 
+          CommonUI().myText(text: day, color: AppTheme.FontGrey,
+          fontSize: isTab ? 10.sp :  12.sp)
+      
+          // Text(day)
+      
+      )
           .toList(),
     );
   }
 
-  Widget _buildDaysGrid(DateTime firstDayOfMonth, int daysInMonth) {
+  Widget _buildDaysGrid(DateTime firstDayOfMonth, int daysInMonth, bool isTab) {
     int firstWeekday = firstDayOfMonth.weekday % 7;
     List<Widget> dayWidgets = [];
 
@@ -294,18 +317,24 @@ class _MenstrualCalendarPageState extends State<MenstrualCalendarPage> {
           child: Stack(
             children: [
               Center(
-                child: Text(
-                  day.toString(),
-                  style: TextStyle(
-                    color: isSelected ? Colors.white : Colors.black,
-                  ),
-                ),
+                child:
+                    CommonUI().myText(text: day.toString(),
+                      fontSize: isTab  ?  10.1.sp : 11.sp,
+                      color: isSelected ? Colors.white : Colors.black,
+          )
+                // Text(
+                //   day.toString(),
+                //   style: TextStyle(
+                //     color: isSelected ? Colors.white : Colors.black,
+                //   ),
+                // ),
               ),
               if (isSelected)
                 Positioned.fill(
                   child: CustomPaint(
                     painter: WaterDropPainter(
-                        day.toString()
+                        day.toString(),
+                      isTab
                     ), // Pass the day as text to painter
                   ),
                 ),

@@ -63,7 +63,8 @@ class _SingupFormState extends State<SingupForm> {
           child: Column(
             children: [
               Container(
-                height: 80.h,
+                height: 100.h,
+                // color: Colors.red,
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(8.w, 0, 6.w, 0),
                   child: Form(
@@ -102,7 +103,7 @@ class _SingupFormState extends State<SingupForm> {
                             return null;
                           },
                         ),
-                        Gap(4.h),
+                        Gap(2.h),
                         CommonUI().myText(
                           text: "Last Name",
                           fontWeight: FontWeight.w500,
@@ -126,7 +127,7 @@ class _SingupFormState extends State<SingupForm> {
                             return null;
                           },
                         ),
-                        Gap(4.h),
+                        Gap(1.5.h),
                         CommonUI().myText(
                           text: "Date of Birth",
                           fontWeight: FontWeight.w500,
@@ -217,7 +218,7 @@ class _SingupFormState extends State<SingupForm> {
                             return null;
                           },
                         ),
-                        Gap(4.h),
+                        Gap(0.5.h),
                         CommonUI().myText(
                           text: "City",
                           fontWeight: FontWeight.w500,

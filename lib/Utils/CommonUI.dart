@@ -4,28 +4,6 @@ import 'AllImports.dart';
 class CommonUI {
 
 
-
-
-  Widget buildShimmerEffect() {
-    return Shimmer.fromColors(
-      baseColor: (Colors.grey[300])!,
-      highlightColor: (Colors.grey[100])!,
-      child: ListView.builder(
-        shrinkWrap: true,
-        itemCount: 5, // Number of shimmering items
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Container(
-              width: double.infinity,
-              height: 15.h,
-              color: Colors.white, // Placeholder color
-            ),
-          );
-        },
-      ),
-    );
-  }
-
   Widget myTabText({
     required String text,
     double fontSize = 15,
@@ -146,22 +124,7 @@ class CommonUI {
 
 
 
-  static Widget shimmer({
-    required String text,
-    required double size,
-    String? fontfamily = "SFPro",
-    FontWeight? font,
-  }) {
-    return Shimmer.fromColors(
-        baseColor: Colors.red,
-        highlightColor: Colors.blue,
-        child: Text(text,
-            style: TextStyle(
-                fontSize: size,
-                fontFamily: fontfamily,
-                color: Colors.black,
-                fontWeight: font)));
-  }
+
 
   static Widget textWidget(
       {required String text,

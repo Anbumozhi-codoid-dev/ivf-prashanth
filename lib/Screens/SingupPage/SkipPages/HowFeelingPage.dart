@@ -19,6 +19,8 @@ class _HowFeelingPageState extends State<HowFeelingPage> {
   int? selectedIndex;
   @override
   Widget build(BuildContext context) {
+    bool isTablet = isTabletDevice(context); // Use the utility function
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -75,7 +77,9 @@ class _HowFeelingPageState extends State<HowFeelingPage> {
                               padding:  EdgeInsets.fromLTRB(3.w,0,0,0),
                               child: Align(
                                 alignment: Alignment.center,
-                                child: CommonUI().myText(text: questionsList[index],
+                                child: CommonUI().myText(
+                                    fontSize: isTablet ? 11.sp : 12.sp,
+                                    text: questionsList[index],
                                 overflow: TextOverflow.visible,
                                 maxLines: 3),
                               ),
@@ -107,7 +111,7 @@ class _HowFeelingPageState extends State<HowFeelingPage> {
               onTap: (){
 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> MenstrualCalendarPage()));
               },
-              child: Image.asset(AppConstants.circleArrowIcon, scale: 4.5,))
+              child: Image.asset(AppConstants.circleArrowIcon, scale: isTablet ? 3 : 4.5,))
         ],
       ),
     );

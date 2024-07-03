@@ -13,8 +13,9 @@ abstract class AppDataHelper {
 
   static bool isValidEmail(String email) =>
       RegExp(r"^[A-Z0-9a-z._-]+@[a-zA-Z0-9_-]+\.[a-zA-Z]+").hasMatch(email);
-
-  static BuildContext? rootContext = AppDataHelper.navKey.currentState?.overlay?.context;
+  // static BuildContext? get rootContext => navKey.currentState?.overlay?.context;
+  static BuildContext? rootContext = AppDataHelper.navKey?.currentState?.overlay?.context;
+  // static BuildContext? rootContext = AppDataHelper.navKey.currentState?.overlay?.context;
 }
 void prettyPrintJSON(dynamic json) {
   if (!kDebugMode) return;

@@ -191,8 +191,9 @@ class _CalendarWidgetState extends State<CalendarWidget> {
 
 class WaterDropPainter extends CustomPainter {
   final String dayText;
+  final bool isTab;
 
-  WaterDropPainter(this.dayText);
+  WaterDropPainter(this.dayText, this.isTab);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -222,7 +223,7 @@ class WaterDropPainter extends CustomPainter {
     TextPainter textPainter = TextPainter(
       text: TextSpan(
         text: dayText,
-        style: TextStyle(color: Colors.white, fontSize: 14.0),
+        style: TextStyle(color: Colors.white, fontSize: isTab ? 10.sp : 10.sp),
       ),
       // textDirection: TextDirection.LTR,
       // Update here

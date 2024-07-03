@@ -300,7 +300,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         animationType: AnimationType.fade,
                         validator: (v) {
                           if (v!.length < 3) {
-                            return "I'm from validator";
+                            return "please enter valid otp";
                           } else {
                             return null;
                           }

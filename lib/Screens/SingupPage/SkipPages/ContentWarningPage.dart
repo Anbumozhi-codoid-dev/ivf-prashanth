@@ -8,8 +8,11 @@ class ContentWarningPage extends StatefulWidget {
 }
 
 class _ContentWarningPageState extends State<ContentWarningPage> {
+
   @override
   Widget build(BuildContext context) {
+    bool isTablet = isTabletDevice(context); // Use the utility function
+
     return Scaffold(
       body:SingleChildScrollView(
 
@@ -90,7 +93,8 @@ class _ContentWarningPageState extends State<ContentWarningPage> {
               onTap: (){
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> PatientDetailForm()));
               },
-              child: Image.asset(AppConstants.circleArrowIcon, scale: 4.5,))
+              child: Image.asset(AppConstants.circleArrowIcon, scale:
+                isTablet ? 2.8 : 4.5,))
         ],
       ),
     );

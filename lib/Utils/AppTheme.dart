@@ -38,6 +38,7 @@ abstract class AppTheme{
   static const Color formFieldGrey = Color(0xFFF4F4F4);
   static const Color bloodRed = Color(0xFFFF5454);
   static const Color grey = Color(0xFF707070);
+  static const Color lightPink = Color(0xFFFFE1F0);
 
 
 
