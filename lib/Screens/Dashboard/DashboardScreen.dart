@@ -29,7 +29,9 @@ class _DashBoardScreenState extends State<DashBoardScreen>
 
   final List<Widget> _tabScreens = [
     const HomeScreen(),
-    // const HomeScreen(),
+    const HomeScreen(),
+    const HomeScreen(),
+    const HomeScreen(),
     // const CampaignList(),
     // const progressbar(),
     // const AttendanceScreen(),

@@ -22,5 +22,12 @@ static const String spermIconSelected = 'assets/sperm_icon1.png';
   static const String juiceImage = 'assets/juice.png';
   static const String heartBeatBakcground= 'assets/track-bg.png';
   static const String verifiedIcon= 'assets/verified.png';
+  static const String sleepImage= 'assets/sleep.png';
+  static const String docProfile= 'assets/doctor_profile.png';
+  static const String heartBox= 'assets/heart_box.png';
+  static const String quotesIcon= 'assets/quote_icon.png';
+  static const String purpleLine= 'assets/purple_line.png';
+  static const String pinkTick= 'assets/pink_tick_icon.png';
+  static const String calendarImage= 'assets/tracking_calendar.png';
 
 }
