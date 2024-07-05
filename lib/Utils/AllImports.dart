@@ -23,7 +23,9 @@ export 'package:pin_code_fields/pin_code_fields.dart';
 export 'package:toast/toast.dart';
 export 'package:datepicker_dropdown/datepicker_dropdown.dart';
 export  'package:ivf/Screens/SingupPage/SignUpFormPage.dart';
-
+// export 'package:story_view/controller/story_controller.dart';
+// export 'package:story_view/widgets/story_view.dart';
+export 'package:shared_preferences/shared_preferences.dart';
 
 
 
@@ -38,6 +40,11 @@ export '../../Screens/SingupPage/SkipPages/MenstrualCalenderPage.dart';
 export '../../Screens/SingupPage/PatientDetailForm.dart';
 export '../../Screens/SingupPage/RegistrationSuccessPage.dart';
 export '../../Utils/DeviceTab.dart';
+export '../../Screens/Home/HomeScreen.dart';
+export '../../Screens/EducationalResource/VideoShotScreen.dart';
+export '../../Screens/EducationalResource/EducationalHomePage.dart';
+
+
 
 
 

@@ -3,8 +3,7 @@ import 'package:ivf/Utils/AppConstants.dart';
 import 'package:ivf/Utils/CommonUI.dart';
 
 import '../Utils/AllImports.dart';
-import 'SingupPage/SkipPages/samplecalendar.dart';
-import 'WelcomePage/WelcomePage.dart';
+
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -24,7 +23,8 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(const Duration(seconds: 3)); // Duration of the splash screen
     Navigator.of(context).pushReplacement(
       CustomPageRoute(
-        child: SingupForm(),
+        child: DashBoardScreen(firstName: "Anbumozhi",),
+        // child: SingupForm(),
         // child:  WelcomePage(),
         begin: Offset(1.0, 0.0),
         end: Offset.zero,
@@ -46,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
               Image.asset(AppConstants.prashanthLogo,
               scale: 3,),
               Gap(2.h),
-              CommonUI().myText(text: "Prashanth Fertility App1",
+              CommonUI().myText(text: "Prashanth Fertility App",
                   fontSize: 17.sp,
                   fontWeight: FontWeight.w600,
                   color: AppTheme.textPink)

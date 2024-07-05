@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:ivf/Network/APPData.dart';
 
 import '../../Utils/AllImports.dart';
 import '../../Utils/DateDropDown.dart';
@@ -135,7 +136,11 @@ class _SingupFormState extends State<SingupForm> {
                           color: AppTheme.black,
                         ),
                         Gap(2.h),
-                        DateDropdownsRow(),
+                        DateDropdownsRow(showDay: true,
+                          onDateChanged: (int day, String month, int year) {
+
+                            print("{$day / $month  / $year}");
+                        },),
                         // Builder(builder: (context) {
                         //   return
                         //     DropdownDatePicker(
@@ -270,24 +275,29 @@ class _SingupFormState extends State<SingupForm> {
                   if(data != null){
 
                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> HowFeelingPage(firstname:firstNameController.text)));
+                    setFirstName(firstNameController.text);
                   }
                 } else {
                   print("form not valid");
 
                 }
               },
-              child: CommonUI().buttonContainer(
-                  height: 4.5.h,
-                  width: 80.w,
-                  color: AppTheme.themePink,
-                  //     :
-                  // AppTheme.formFieldGrey,
-                  child: Center(
-                    child: CommonUI().myText(
-                        text: "Register",
-                        color: AppTheme.white,
-                        fontSize: 15.sp),
-                  )),
+              child: Padding(
+                padding:
+                 EdgeInsets.fromLTRB( 2.w,2.h,2.w,2.h),
+                child: CommonUI().buttonContainer(
+                    height: 4.5.h,
+                    width: 80.w,
+                    color: AppTheme.themePink,
+                    //     :
+                    // AppTheme.formFieldGrey,
+                    child: Center(
+                      child: CommonUI().myText(
+                          text: "Register",
+                          color: AppTheme.white,
+                          fontSize: 15.sp),
+                    )),
+              ),
             ),
           ],
         ));

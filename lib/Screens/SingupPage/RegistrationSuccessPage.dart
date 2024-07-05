@@ -46,7 +46,7 @@ class _RegistrationSuccessState extends State<RegistrationSuccess> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: (){
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> DashboardScreen()));
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

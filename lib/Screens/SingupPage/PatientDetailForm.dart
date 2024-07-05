@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 import '../../Utils/AllImports.dart';
+import '../../Utils/DateDropDown.dart';
 
 class PatientDetailForm extends StatefulWidget {
   const PatientDetailForm({super.key});
@@ -36,8 +39,12 @@ class _PatientDetailFormState extends State<PatientDetailForm> {
 
   @override
   Widget build(BuildContext context) {
+    bool isTablet = isTabletDevice(context); // Use the utility function
+
+
     return Scaffold(
-      appBar: AppBar(
+      appBar:
+      AppBar(
 
           backgroundColor: AppTheme.themePink,
           centerTitle: true,
@@ -65,7 +72,7 @@ class _PatientDetailFormState extends State<PatientDetailForm> {
           children: [
 
             Container(
-              height: 100.h,
+              height: isTablet ?  135.h : 130.h,
               child: Padding(
                 padding: EdgeInsets.fromLTRB(8.w, 0, 6.w, 0),
                 child: Form(
@@ -112,79 +119,7 @@ class _PatientDetailFormState extends State<PatientDetailForm> {
                         color: AppTheme.black,
                       ),
                       Gap(2.h),
-                  TextFormField(
-                    // autovalidateMode: AutovalidateMode.onUserInteraction,
-                    controller: surgicalHistoryController,
-                    inputFormatters: [
-                      FilteringTextInputFormatter.deny(RegExp(r"\s\s")),
-                      FilteringTextInputFormatter.deny(RegExp(
-                          r'(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])')),
-                    ],
-                    keyboardType: TextInputType.text,
-                    maxLength: 60,
-                    onChanged: (val) {},
-                    maxLines: 1,
-                    validator: (value) {
 
-                      if (value == null) {
-                        return "Please enter address";
-                      }  else {
-                        return null;
-                      }
-                    },
-                    // focusNode: addressFocus,
-                    autofocus: false,
-                    decoration: InputDecoration(
-                      errorMaxLines: 3,
-                        filled: true,
-                        counterText: "",
-                        // constraints: BoxConstraints(minHeight: 30.h),
-                        fillColor: AppTheme.formFieldGrey,
-                        // errorStyle: TextStyle(fontSize: hintfontsize, color: AppTheme.bloodRed, height: 0.5.h),
-                        contentPadding:
-                        EdgeInsets.fromLTRB(1.w, 1.h, 5, 5),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(4)),
-                        borderSide: BorderSide(
-                          width: 1,
-                          color: Color(0xffE5E5E5),
-                        ),
-                      ),
-                      disabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(4)),
-                        borderSide: BorderSide(
-                          width: 1,
-                          color: Color(0xffE5E5E5),
-                        ),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(4)),
-                        borderSide: BorderSide(
-                          width: 1,
-                          color: Color(0xffE5E5E5),
-                        ),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(4)),
-                        borderSide: BorderSide(
-                          width: 1,
-                        ),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(4)),
-                          borderSide: BorderSide(
-                            width: 1,
-                            color: Colors.red,
-                          )),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(4)),
-                        borderSide: BorderSide(
-                          width: 1,
-                          color: Colors.red,
-                        ),
-                      ),
-                    ),
-                  ),
                       CommonUI().formFields(
                         controller: surgicalHistoryController,
                         hintText: "Enter surgical history",
@@ -210,16 +145,24 @@ class _PatientDetailFormState extends State<PatientDetailForm> {
                         color: AppTheme.textPink,
                       ),
                       Gap(2.h),
-                      CommonUI().myText(text: "Types of Treatment"),
+                      CommonUI().myText(text: "Types of Treatment",
+                      fontSize: 13.sp),
                       Gap(1.h),
                       Container(
                         height: 10.h,
                         width: 90.w,
                         // padding: EdgeInsets.all(5.0),
                         child: DropdownButtonFormField<String>(
-                          icon: Icon(Icons.arrow_drop_down,
-                              size: 30.sp,
-                              color: AppTheme.themePink),
+                          icon: Container(
+                            width:  isTablet ? 10.w : 5.w,
+                            child: FittedBox(
+                              fit: BoxFit.cover,
+                              child: Icon(Icons.arrow_drop_down,
+                                  // size: isTablet ? 50 :  30.sp,
+                                  color: AppTheme.themePink,
+                              ),
+                            ),
+                          ),
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: AppTheme.formFieldGrey,
@@ -247,79 +190,6 @@ class _PatientDetailFormState extends State<PatientDetailForm> {
                           }).toList(),
                         ),
                       ),
-                      // TypeAheadField(
-                      //   textFieldConfiguration: TextFieldConfiguration(
-                      //     controller: treatmentTypeController,
-                      //     style: TextStyle(
-                      //         color: AppTheme.blackColor,
-                      //         fontSize: 12.sp,
-                      //         fontWeight: FontWeight.w500,
-                      //         fontFamily: 'Nunito'),
-                      //     decoration: InputDecoration(
-                      //       filled: true,
-                      //       fillColor: Colors.grey[200],
-                      //       contentPadding:
-                      //       const EdgeInsets.symmetric(horizontal: 8, vertical: 7.0),
-                      //       border: OutlineInputBorder(
-                      //         borderSide: BorderSide.none,
-                      //         borderRadius: BorderRadius.circular(10),
-                      //       ),
-                      //       helperStyle: const TextStyle(
-                      //           color: AppTheme.primaryColor2, fontFamily: 'Nunito'),
-                      //       suffixIcon:
-                      //       Icon(Icons.arrow_drop_down,color: AppTheme.textPink, size:
-                      //           30.sp,),
-                      //       hintText: '',
-                      //       focusedBorder: OutlineInputBorder(
-                      //           borderSide: BorderSide.none,
-                      //           borderRadius: BorderRadius.circular(10)),
-                      //     ),
-                      //
-                      //   ),
-                      //
-                      //   suggestionsCallback: (pattern) async {
-                      //     return await _statefetchSuggestions(pattern, context);
-                      //   },
-                      //
-                      //
-                      //   itemBuilder: (context, suggestion) {
-                      //     return Container(
-                      //         decoration:
-                      //         BoxDecoration(borderRadius: BorderRadius.circular(10.0)),
-                      //         child: ListTile(
-                      //             title: Column(
-                      //               children: [
-                      //                 Row(
-                      //                   children: [
-                      //                     Padding(
-                      //                       padding: EdgeInsets.fromLTRB(2.w, 0, 0, 0),
-                      //                       child: Container(
-                      //                         width: 70.w,
-                      //                         child: CommonUI().myText(
-                      //                             text: suggestion.treatmentType,
-                      //                             maxLines: 2,
-                      //                             color: AppTheme.blackColor,
-                      //                             fontSize: 12.sp),
-                      //                       ),
-                      //                     ),
-                      //                   ],
-                      //                 ),
-                      //                 const Divider(
-                      //                   endIndent: 0,
-                      //                 )
-                      //               ],
-                      //             )));
-                      //   },
-                      //   suggestionsBoxDecoration: SuggestionsBoxDecoration(
-                      //       borderRadius: BorderRadius.circular(10.0),
-                      //       color: AppTheme.whiteColor,
-                      //       elevation: 4.0),
-                      //   onSuggestionSelected: (suggestion) {
-                      //     _stateonItemSelected(suggestion, context);
-                      //   },
-                      //
-                      //
-                      // ),
 
                       Gap(2.h),
                       CommonUI().myText(
@@ -328,86 +198,96 @@ class _PatientDetailFormState extends State<PatientDetailForm> {
                         fontSize: 13.sp,
                         color: AppTheme.black,
                       ),
-                      Gap(2.h),
-                      Builder(builder: (context) {
-                        return DropdownDatePicker(
-                          // inputDecoration: InputDecoration(
-                          //   border: BorderSide.none
-                          // ),
-                          icon: Icon(
-                            applyTextScaling: true,
-                            textDirection: TextDirection.ltr,
-                            Icons.arrow_drop_down_outlined,
-                            color: AppTheme.themePink,
-                            size: 30.sp,
-                          ),
-                          boxDecoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: AppTheme.formFieldGrey),
+                      Gap(3.h),
+                      DateDropdownsRow(showDay: false, onDateChanged: (int day, String month, int year) {
+                        print("{$day - $month  - $year}");
+                      },),
 
-                          isDropdownHideUnderline: true, // optional
-                          isFormValidator: true, // optional
-                          startYear: 1900, // optional
-                          endYear: 2024, // optional
-                          width: 4.w, // optional
-                          // width: 16, // optional
-                          // selectedDay: dobDay, // optional
-                          selectedMonth: dobMonth, // optional
-                          selectedYear: dobYear, // optional
-                          onChangedDay: (value) {
-                            dobDay = int.parse(value!);
-                            print('onChangedDay: $value');
-                          },
-                          onChangedMonth: (value) {
-                            dobMonth = int.parse(value!);
-                            print('onChangedMonth: $value');
-                          },
-                          onChangedYear: (value) {
-                            dobYear = int.parse(value!);
-                            print('onChangedYear: $value');
 
-                            // calculateAge(  DateTime(_selectedYear!, _selectedMonth!, _selectedDay!));
-                          },
-
-                          showDay: false,
-                          monthFlex: 5, // optional
-                          // dayFlex: 0,
-                          yearFlex: 5, // optional
-                          // hintDay: 'Day', // optional
-                          hintMonth: 'Month', // optional
-                          hintYear: 'Year', // optional
-                          hintTextStyle:
-                          TextStyle(color: Colors.grey), // optional
-                        );
-                      }),
-                      Gap(2.h),
+                      // Builder(builder: (context) {
+                      //   return DropdownDatePicker(
+                      //     // inputDecoration: InputDecoration(
+                      //     //   border: BorderSide.none
+                      //     // ),
+                      //     icon: Icon(
+                      //       applyTextScaling: true,
+                      //       textDirection: TextDirection.ltr,
+                      //       Icons.arrow_drop_down_outlined,
+                      //       color: AppTheme.themePink,
+                      //       size: 20.sp,
+                      //     ),
+                      //     boxDecoration: BoxDecoration(
+                      //         borderRadius: BorderRadius.circular(6.0),
+                      //         color: AppTheme.formFieldGrey),
+                      //
+                      //     isDropdownHideUnderline: true, // optional
+                      //     isFormValidator: true, // optional
+                      //     startYear: 1900, // optional
+                      //     endYear: 2024, // optional
+                      //     width: 4.w, // optional
+                      //     // width: 16, // optional
+                      //     // selectedDay: dobDay, // optional
+                      //     selectedMonth: dobMonth, // optional
+                      //     selectedYear: dobYear, // optional
+                      //     onChangedDay: (value) {
+                      //       dobDay = int.parse(value!);
+                      //       print('onChangedDay: $value');
+                      //     },
+                      //     onChangedMonth: (value) {
+                      //       dobMonth = int.parse(value!);
+                      //       print('onChangedMonth: $value');
+                      //     },
+                      //     onChangedYear: (value) {
+                      //       dobYear = int.parse(value!);
+                      //       print('onChangedYear: $value');
+                      //
+                      //       // calculateAge(  DateTime(_selectedYear!, _selectedMonth!, _selectedDay!));
+                      //     },
+                      //
+                      //     showDay: false,
+                      //     monthFlex: 5, // optional
+                      //     // dayFlex: 0,
+                      //     yearFlex: 5, // optional
+                      //     // hintDay: 'Day', // optional
+                      //     hintMonth: 'Month', // optional
+                      //     hintYear: 'Year', // optional
+                      //     hintTextStyle:
+                      //     TextStyle(color: Colors.grey), // optional
+                      //   );
+                      // }),
+                      Gap(5.h),
                       CommonUI().myText(
                         text: "Success / Failure",
                         fontWeight: FontWeight.w500,
                         fontSize: 13.sp,
                         color: AppTheme.black,
                       ),
+                      Gap(3.h),
                       Row(
                         children: [
                           SizedBox(width: 20),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Checkbox(
-                                shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                                checkColor: AppTheme.white,
-                                activeColor: AppTheme.themePink,
-                                value: _selectedOption == true,
-                                onChanged: (bool? value) {
-                                  setState(() {
-                                    if (value == true) {
-                                      _selectedOption = true;
-                                    } else {
-                                      // _selectedOption = null;
-                                    }
-                                  });
-                                },
+                              Transform.scale(
+                                scale: isTablet ?  2.3 : 1,
+
+                                child: Checkbox(
+                                  shape: RoundedRectangleBorder(
+                                                          borderRadius: BorderRadius.circular(10)),
+                                  checkColor: AppTheme.white,
+                                  activeColor: AppTheme.themePink,
+                                  value: _selectedOption == true,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      if (value == true) {
+                                        _selectedOption = true;
+                                      } else {
+                                        // _selectedOption = null;
+                                      }
+                                    });
+                                  },
+                                ),
                               ),
                               CommonUI().myText(text: "Success",
                                   fontfamily: "Nunito",
@@ -416,21 +296,25 @@ class _PatientDetailFormState extends State<PatientDetailForm> {
 
                               SizedBox(width: 20),
                               // Add some spacing between the checkboxes
-                              Checkbox(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                                checkColor: AppTheme.white,
-                                activeColor: AppTheme.themePink,
-                                value: _selectedOption == false,
-                                onChanged: (bool? value) {
-                                  setState(() {
-                                    if (value == true) {
-                                      _selectedOption = false;
-                                    } else {
-                                      // _selectedOption = null;
-                                    }
-                                  });
-                                },
+                              Transform.scale(
+                                scale: isTablet ?  2.3 : 1,
+
+                                child: Checkbox(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  checkColor: AppTheme.white,
+                                  activeColor: AppTheme.themePink,
+                                  value: _selectedOption == false,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      if (value == true) {
+                                        _selectedOption = false;
+                                      } else {
+                                        // _selectedOption = null;
+                                      }
+                                    });
+                                  },
+                                ),
                               ),
                               CommonUI().myText(text: "Failure",
                                   fontfamily: "Nunito",
@@ -442,14 +326,14 @@ class _PatientDetailFormState extends State<PatientDetailForm> {
                         ],
                       ),
 
-                      Gap(2.h),
+                      Gap(5.h),
                       CommonUI().myText(
                         text: "More Details",
                         fontWeight: FontWeight.w500,
                         fontSize: 13.sp,
                         color: AppTheme.black,
                       ),
-                      // Gap(2.h),
+                      Gap(4.h),
                       TextFormField(
                         controller: moreDetailController,
                         maxLines: 4,
@@ -476,25 +360,7 @@ class _PatientDetailFormState extends State<PatientDetailForm> {
                           return null;
                         },
                       ),
-                      // CommonUI().textFormField(
-                      //   maxLines: 5,
-                      //   controller: countryController,
-                      //   hintText: "Enter your country",
-                      //   hintfontsize: 12.sp,
-                      //   fontfamily: "Nunito",
-                      //   fontsize: 13.sp,
-                      //   enabled: true,
-                      //   show: false,
-                      //   height: 5.h,
-                      //   width: 90.w,
-                      //   validator: (value) {
-                      //     if (value == null || value.isEmpty) {
-                      //       return 'Please enter a valid country';
-                      //     }
-                      //     return null;
-                      //   },
-                      // ),
-                      // Gap(1.h),
+
 
 
                     ],
@@ -510,7 +376,7 @@ class _PatientDetailFormState extends State<PatientDetailForm> {
         children: [
           GestureDetector(
             onTap: (){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> DashboardScreen()));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> DashBoardScreen()));
             },
             child: CommonUI().myText(text: "Skip",color: AppTheme.textPink,
                 fontSize: 14.sp,
@@ -521,7 +387,9 @@ class _PatientDetailFormState extends State<PatientDetailForm> {
               onTap: (){
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> RegistrationSuccess()));
               },
-              child: Image.asset(AppConstants.circleArrowIcon, scale: 4.5,))
+              child:
+              Image.asset(AppConstants.circleArrowIcon, scale:
+              isTablet ? 2.8 : 4.5,)          )
         ],
       ),
     );

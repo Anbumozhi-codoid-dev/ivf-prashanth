@@ -3,6 +3,7 @@
 import '../../Repository/ApiObjectRepository.dart';
 import '../../Utils/AllImports.dart';
 import '../../Utils/DeviceTab.dart';
+import '../Home/HomeScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -366,7 +367,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             coupleId: CoupleIDController!.text.trim(), id: "userID", otp: otpTextEditingController!.text,
 
                           );
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> DashboardScreen()));
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
 
                         }
        },

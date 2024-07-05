@@ -319,6 +319,7 @@ class CommonUI {
     double height = 7,
     double width = 100,
     Widget? child,
+   double borderradius = 5,
 
   }){
 
@@ -326,7 +327,7 @@ class CommonUI {
       height: height,
       width: width,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(borderradius),
         color: color
       ),
       child: child,

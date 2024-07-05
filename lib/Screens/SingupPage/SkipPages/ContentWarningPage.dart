@@ -82,7 +82,7 @@ class _ContentWarningPageState extends State<ContentWarningPage> {
         children: [
           GestureDetector(
             onTap: (){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> DashboardScreen()));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> DashBoardScreen()));
             },
             child: CommonUI().myText(text: "Skip",color: AppTheme.textPink,
                 fontSize: 14.sp,

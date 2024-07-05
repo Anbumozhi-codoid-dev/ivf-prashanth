@@ -72,7 +72,8 @@ class _MenstrualCalendarPageState extends State<MenstrualCalendarPage> {
               padding: EdgeInsets.fromLTRB(5.w, 0, 3.w, 0),
               child: Container(
                   width: 90.w,
-                  height: 60.h,
+                  height: 50.h,
+
                   child:
                   Column(
                     children: <Widget>[
@@ -88,8 +89,12 @@ class _MenstrualCalendarPageState extends State<MenstrualCalendarPage> {
               ),
             ),
          isTablet ?    Gap(3.h) : SizedBox(),
+             Divider(
+              indent: 5.w,
+              endIndent: 5.w,
+            ),
             Padding(
-              padding: EdgeInsets.fromLTRB(5.w, 0, 3.w, 0),
+              padding: EdgeInsets.fromLTRB(5.w, 1.h, 3.w, 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -134,7 +139,7 @@ class _MenstrualCalendarPageState extends State<MenstrualCalendarPage> {
                 ],
               ),
             ),
-            Gap(3.h),
+            Gap(1.5.h),
             Padding(
               padding: EdgeInsets.fromLTRB(8.w, 2.h, 3.w, 0),
               child: Column(
@@ -221,7 +226,7 @@ class _MenstrualCalendarPageState extends State<MenstrualCalendarPage> {
           GestureDetector(
             onTap: () {
               Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => DashboardScreen()));
+                  MaterialPageRoute(builder: (context) => DashBoardScreen()));
             },
             child: CommonUI().myText(text: "Skip", color: AppTheme.textPink,
                 fontSize: 14.sp,

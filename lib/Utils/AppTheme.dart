@@ -31,14 +31,18 @@ abstract class AppTheme{
   static const Color themeDarkGrey = Color(0xFF555454);
   static const Color FontGrey = Color(0xFF626262);
   static const Color fontBlack = Color.fromRGBO(42,42,42, 1);
-  static const Color themePink = Color(0xFFF555A2);
+  static const Color themePink = Color(0xFFF451A0);
+  // static const Color themePink = Color(0xFFF555A2);
   static const Color bloodDropRed = Color(0xFFFF5454);
   static const Color bloodLineRed = Color(0xFFFFBFBF);
   static const Color textPink = Color(0xFFE8388D);
+  static const Color textPurple = Color(0xFF752B8E);
   static const Color formFieldGrey = Color(0xFFF4F4F4);
   static const Color bloodRed = Color(0xFFFF5454);
   static const Color grey = Color(0xFF707070);
   static const Color lightPink = Color(0xFFFFE1F0);
+  static const Color gradientPink = Color(0xFFE8388D);
+  static const Color gradientPurple = Color(0xFF752B8E);
 
 
 
