@@ -334,6 +334,30 @@ class CommonUI {
     );
   }
 
+  Widget buttonContainerTransBackgroundWithBorder({
+    Color? color = AppTheme.white,
+    Color? bordercolor = AppTheme.white,
+    BorderStyle borderstyle = BorderStyle.solid,
+    double height = 7,
+    double width = 100,
+    double borderwidth = 1,
+    Widget? child,
+   double borderradius = 5,
+
+  }){
+
+    return Container(
+      height: height,
+      width: width,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(borderradius),
+        color: color,
+        border: Border.all(color: bordercolor!,width: borderwidth,style: borderstyle)
+      ),
+      child: child,
+    );
+  }
+
   Widget textFormField({
     double height = 7,
     double width = 100,

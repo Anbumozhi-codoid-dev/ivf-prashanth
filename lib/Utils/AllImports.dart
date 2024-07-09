@@ -43,6 +43,12 @@ export '../../Utils/DeviceTab.dart';
 export '../../Screens/Home/HomeScreen.dart';
 export '../../Screens/EducationalResource/VideoShotScreen.dart';
 export '../../Screens/EducationalResource/EducationalHomePage.dart';
+export 'package:carousel_slider/carousel_slider.dart';
+export 'package:dots_indicator/dots_indicator.dart';
+
+export 'package:flutter_svg/svg.dart';
+export 'package:percent_indicator/circular_percent_indicator.dart';
+
 
 
 

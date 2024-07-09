@@ -70,6 +70,8 @@ class _DashBoardScreenState extends State<DashBoardScreen>
 
   @override
   Widget build(BuildContext context) {
+    bool isTablet = isTabletDevice(context); // Use the utility function
+
     // var _allLanguages = languages.map((e) => e.language!).toList();
     return Scaffold(
       backgroundColor: AppTheme.whiteColor,
@@ -95,12 +97,15 @@ class _DashBoardScreenState extends State<DashBoardScreen>
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Image.asset(AppConstants.profilePic,
-              scale: 4,),
+              scale: isTablet ? 2.3 : 4,),
           Gap(3.w),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              isTablet ? Gap(2.h)
+              :
+                  SizedBox(),
               CommonUI().myText(
                     text: greetingString! ,
                     color: AppTheme.white,
@@ -118,7 +123,7 @@ class _DashBoardScreenState extends State<DashBoardScreen>
               Gap(0.4.h),
 
               CommonUI().myText(
-                  text: "( ${DateFormat("dd / MM / YYYY").format(DateTime.now())} )",
+                  text: "( ${DateFormat("dd / MM / yyyy").format(DateTime.now())} )",
                 color: AppTheme.white,
                 fontSize: 8.sp,
                 fontWeight: FontWeight.w600,
@@ -129,12 +134,13 @@ class _DashBoardScreenState extends State<DashBoardScreen>
           ),
              Gap(23.w),
               Image.asset(AppConstants.alarmIcon,
-              scale: 5,
+              scale: isTablet ? 2 :  5,
               ),
               Gap(2.w),
 
-              Image.asset(AppConstants.prashanthLogo,
-              scale: 8,
+              Image.asset(
+                AppConstants.prashanthLogo,
+              scale: isTablet ?  4 :  8,
               ),
 
 

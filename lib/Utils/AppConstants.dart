@@ -29,5 +29,10 @@ static const String spermIconSelected = 'assets/sperm_icon1.png';
   static const String purpleLine= 'assets/purple_line.png';
   static const String pinkTick= 'assets/pink_tick_icon.png';
   static const String calendarImage= 'assets/tracking_calendar.png';
+  static const String rightArrowPink= 'assets/right_arrow.svg';
+  static const String bloodDropWhite = 'assets/blood_drop_white.png';
+  static const String bpmRateImage = 'assets/heart_rate.png';
+  static const String checkedBoxImage = 'assets/checked_box_bg.png';
+  static const String purpleCircleArrowRight= 'assets/purple_arrow_right.png';
 
 }
