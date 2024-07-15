@@ -47,6 +47,7 @@ abstract class AppTheme{
   static const Color gradientPink = Color(0xFFE8388D);
   static const Color gradientPurple = Color(0xFF752B8E);
   static const Color circleGrey = Color(0xFFF5F5F5);
+  static const Color sleepTrackingBgPurple = Color(0xFFE9DDED);
 
 
 

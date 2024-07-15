@@ -23,9 +23,9 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(const Duration(seconds: 3)); // Duration of the splash screen
     Navigator.of(context).pushReplacement(
       CustomPageRoute(
-        child: DashBoardScreen(firstName: "Anbumozhi",),
+        // child: DashBoardScreen(firstName: "Anbumozhi",),
         // child: SingupForm(),
-        // child:  WelcomePage(),
+        child:  WelcomePage(),
         begin: Offset(1.0, 0.0),
         end: Offset.zero,
         duration: 1,

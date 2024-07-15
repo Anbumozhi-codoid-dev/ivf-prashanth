@@ -29,6 +29,7 @@ MaterialColor buildMaterialColor(Color color) {
 void main() {
 
   WidgetsFlutterBinding.ensureInitialized();
+  // SizerUtil();
   runApp(MyApp());
   networkCheck().checkinternetconnectivity();
 

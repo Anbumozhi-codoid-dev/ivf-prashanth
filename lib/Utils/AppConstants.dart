@@ -34,5 +34,13 @@ static const String spermIconSelected = 'assets/sperm_icon1.png';
   static const String bpmRateImage = 'assets/heart_rate.png';
   static const String checkedBoxImage = 'assets/checked_box_bg.png';
   static const String purpleCircleArrowRight= 'assets/purple_arrow_right.png';
+  static const String sleepTrackTimer= 'assets/sleep_track_timer.png';
+  static const String sleepTrackMoon= 'assets/sleep_track_moon.png';
+  static const String moon3DIcon= 'assets/moon_icon.png';
+  static const String trendingNowImg= 'assets/trending_now_img.png';
+  static const String userProfileIcon= 'assets/profile_icon.png';
+  static const String treatmentIcon= 'assets/treatment.png';
+  static const String trackIcon= 'assets/track_icon.png';
+  static const String homeIcon= 'assets/home_icon.png';
 
 }

@@ -1,7 +1,8 @@
 import 'AllImports.dart';
 
 bool isTabletDevice(BuildContext context) {
-  // SizerUtil.deviceType.name
+  // print( SizerUtil.deviceType == DeviceType.tablet);
+  // // print(deviceName);
   var shortestSide = MediaQuery.of(context).size.shortestSide;
   return shortestSide > 600;
-}
+  }

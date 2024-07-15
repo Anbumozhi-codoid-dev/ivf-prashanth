@@ -65,6 +65,7 @@ dependencies:
 #  cr_calendar: ^0.0.4
   syncfusion_flutter_datepicker: ^20.3.48
   flutter_svg: ^2.0.8
+  vector_math: ^2.1.4
 #  syncfusion_flutter_calendar: ^19.4.56
 
 

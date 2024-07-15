@@ -224,62 +224,73 @@ class _DashBoardScreenState extends State<DashBoardScreen>
   }
 
   Widget get _buildBottomTabBar => Container(
+
         decoration: const BoxDecoration(
+
             boxShadow: [
               BoxShadow(
-                color: AppTheme.LightGrey,
+                // color: AppTheme.LightGrey,
                 blurRadius: 10.0,
                 spreadRadius: 2.0,
                 offset: Offset(0, 10), // Changes the shadow position
               ),
             ],
             borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+                topLeft: Radius.circular(40), topRight: Radius.circular(40))),
         constraints: BoxConstraints(
           minHeight: 5.h,
-          maxHeight: 10.9.h,
+          maxHeight: 11.4.h,
+
         ),
         // decoration: _elevationShadow,
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-            boxShadow: <BoxShadow>[
-              BoxShadow(
-                color: AppTheme.LightGrey,
-                blurRadius: 28,
-              ),
-            ],
+            // boxShadow: <BoxShadow>[
+            //   BoxShadow(
+            //     color: AppTheme.themePink,
+            //     blurRadius: 28,
+            //   ),
+            // ],
           ),
-          child: BottomNavigationBar(
-            unselectedLabelStyle: TextStyle(
-                color: AppTheme.blackColor,
-                fontSize: 8.sp,
-                fontWeight: FontWeight.w600,
-                letterSpacing: 0.6),
-            selectedLabelStyle: TextStyle(
-                color: AppTheme.blackColor,
-                fontSize: 8.sp,
-                fontWeight: FontWeight.w600,
-                letterSpacing: 0.6),
-            elevation: 0,
-            type: BottomNavigationBarType.fixed,
-            items: _bottomBarItems,
-            currentIndex: _tabController!.index,
-            backgroundColor: AppTheme.pageBackgroundWhite,
-            onTap: (index) {
-              _handleTabBarSelection(index);
-            },
-            selectedFontSize: 8.sp,
+          child: ClipRRect(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(40),
+              topRight: Radius.circular(40),
+            ),
+            child: BottomNavigationBar(
+              unselectedLabelStyle: TextStyle(
+                  color: AppTheme.blackColor,
+                  fontSize: 8.sp,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 0.6),
+              selectedLabelStyle: TextStyle(
+                  color: AppTheme.blackColor,
+                  fontSize: 8.sp,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 0.6),
+              elevation: 0,
+              type: BottomNavigationBarType.fixed,
+              items: _bottomBarItems,
+              currentIndex: _tabController!.index,
+              backgroundColor : AppTheme.themePink,
+              onTap: (index) {
+                _handleTabBarSelection(index);
+              },
+              selectedFontSize: 8.sp,
 
-            // unselectedFontSize: 10.sp,
-            // showUnselectedLabels: false,
-            // showSelectedLabels: true,
-            unselectedItemColor: AppTheme.blackColor,
-            selectedItemColor: AppTheme.blackColor,
+              // unselectedFontSize: 10.sp,
+              // showUnselectedLabels: false,
+              // showSelectedLabels: true,
+              unselectedItemColor: AppTheme.blackColor,
+              selectedItemColor: AppTheme.blackColor,
+            ),
           ),
         ),
       );
+
+
 
   List<BottomNavigationBarItem> get _bottomBarItems {
     List<BottomNavigationBarItem> _tabItems = [];
@@ -320,22 +331,22 @@ class _DashBoardScreenState extends State<DashBoardScreen>
   }
 
   Widget _bottomMenuIcon(AppLandingMenuList item, bool isSelected, name) {
-    var color = isSelected ? AppTheme.themePink : AppTheme.grey;
+    var color = isSelected ? AppTheme.white : AppTheme.black;
     var size = 20.sp;
     var iconName = isSelected ? "" : "";
     selectedtab = isSelected;
     switch (item) {
       case AppLandingMenuList.HOME:
-        iconName = AppConstants.tick_Icon;
+        iconName = AppConstants.homeIcon;
         break;
       case AppLandingMenuList.STORE:
-        iconName = AppConstants.tick_Icon;
+        iconName = AppConstants.treatmentIcon;
         break;
       case AppLandingMenuList.CAMPAIGN:
-        iconName = AppConstants.tick_Icon;
+        iconName = AppConstants.trackIcon;
         break;
       case AppLandingMenuList.SETTINGS:
-        iconName = AppConstants.tick_Icon;
+        iconName = AppConstants.userProfileIcon;
         break;
     }
     return Column(

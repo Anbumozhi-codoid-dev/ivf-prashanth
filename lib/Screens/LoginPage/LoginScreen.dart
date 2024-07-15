@@ -367,7 +367,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             coupleId: CoupleIDController!.text.trim(), id: "userID", otp: otpTextEditingController!.text,
 
                           );
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> DashBoardScreen(index: 0,)));
 
                         }
        },
